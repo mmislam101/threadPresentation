@@ -3,7 +3,11 @@ import Foundation
 import PlaygroundSupport
 
 /*: 
- ## Thread
+ ## Processes Vs. Threads
+ ## Threads
+ 
+ This is a thread:
+ 
  [Creating Threads](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/CreatingThreads/CreatingThreads.html)
 */
 //let thread = Thread {
