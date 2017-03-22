@@ -4,24 +4,6 @@ import UIKit
 import Foundation
 import PlaygroundSupport
 
-func blockingPrint(message: String, randomlyAfterSeconds seconds: Int) {
-    usleep(useconds_t(randomBetweenInt(lower: 0, upper: seconds * 1000000)))
-    print(message)
-}
-
-func blockingPrint(message: String, afterSeconds seconds: TimeInterval) {
-    usleep(useconds_t(seconds * 1000000))
-    print(message)
-}
-
-func randomBetweenFloats(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat{
-    return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
-}
-
-func randomBetweenInt(lower: Int , upper: Int) -> Int {
-    return lower + Int(arc4random_uniform(UInt32(upper - lower + 1)))
-}
-
 //-----------------------------------------------------------------------------
 //____________________________ Thread ____________________________________
 // https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/CreatingThreads/CreatingThreads.html
