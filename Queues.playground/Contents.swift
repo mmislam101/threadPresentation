@@ -128,5 +128,12 @@ DispatchQueue.main.sync {
     blockingPrint(message: "print", randomlyAfterSeconds: 1)
 }
 #endif
+/*: 
+ ### Other types of DispatchQueues
+ - DispatchGroup: If you want to execute a task something **after** one or more Queues are finished
+ - DispatchWorkItem: If you want to cancel work on a queue
+ - DispatchSource: Not really sure what this is \
+ [Good doc with examples](https://www.allaboutswift.com/dev/2016/7/12/gcd-with-swfit3)
+ */
 //: =========================
 PlaygroundPage.current.needsIndefiniteExecution = true
