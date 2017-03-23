@@ -40,8 +40,29 @@ runner.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
  - It eliminates the code needed to manage and schedule work on threads.
  - It simplifies the code you have to write. \
  [Dispatch Queues](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html)
+ 
+ There are two types of Queues, **Serial** and **Concurrent** \
+ ![Queues](Queues.png) \
+ There are two types of executions, **Synchronous** or blocking and **Asynchronous** or non-blocking \
+ ![Executions](Executions.png)
  */
-//: ### Custom serial queue
+//: ### Synchronous execution
+#if false
+print("The cat")
+DispatchQueue.global().sync {
+    blockingPrint(message: "jumped over the", afterSeconds: 1)
+}
+print("lazy dog")
+#endif
+//: ### Asynchronous execution
+#if false
+print("The cat")
+DispatchQueue.global().async {
+    blockingPrint(message: "jumped over the", afterSeconds: 1)
+}
+print("lazy dog")
+#endif
+//: ### Serial queue
 #if false
 let serialQueue = DispatchQueue(label: "serialQueue")
 
@@ -57,7 +78,7 @@ serialQueue.async {
     blockingPrint(message: "print 3: \(Thread.current)", afterSeconds: 1)
 }
 #endif
-//: ### Custom concurrent queue
+//: ### Concurrent queue
 #if false
 let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
 
@@ -70,57 +91,41 @@ concurrentQueue.async {
 }
 
 concurrentQueue.async {
+    blockingPrint(message: "print 3: \(Thread.current)", afterSeconds: 1)
+}
+#endif
+//: ### Background concurrent and asynchronous
+#if false
+DispatchQueue.global().async {
+    blockingPrint(message: "print 1: \(Thread.current)", afterSeconds: 1)
+}
+
+DispatchQueue.global().async {
     blockingPrint(message: "print 2: \(Thread.current)", afterSeconds: 1)
 }
-#endif
-//: ### Blocking/Synchronous queue
-#if false
-print("The cat")
-DispatchQueue.global().sync {
-    blockingPrint(message: "jumped over the", afterSeconds: 1)
-}
-print("lazy dog")
-#endif
-//: ### Non-blocking/Asynchronous queue
-#if false
-print("The cat")
-DispatchQueue.global().async {
-    blockingPrint(message: "jumped over the", afterSeconds: 1)
-}
-print("lazy dog")
-#endif
-//: ### Background concurrent queue asynchronously/non-blocking
-#if false
-DispatchQueue.global().async {
-    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
-}
 
 DispatchQueue.global().async {
-    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
-}
-
-DispatchQueue.global().async {
-    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
+    blockingPrint(message: "print 3: \(Thread.current)", afterSeconds: 1)
 }
 #endif
-//: ### Main Consecutive/Serial Queue asynchronously
+//: ### Main serial and asynchronous
 #if false
 DispatchQueue.main.async {
-    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
+    blockingPrint(message: "print 1", randomlyAfterSeconds: 1)
 }
 
 DispatchQueue.main.async {
-    blockingPrint(message: "poo2", randomlyAfterSeconds: 1)
+    blockingPrint(message: "print 2", randomlyAfterSeconds: 1)
 }
 
 DispatchQueue.main.async {
-    blockingPrint(message: "poo3", randomlyAfterSeconds: 1)
+    blockingPrint(message: "print 3", randomlyAfterSeconds: 1)
 }
 #endif
-//: ### Main consecutive/serial Queue **synchronously**
+//: ### Main serial and synchronous
 #if false
 DispatchQueue.main.sync {
-    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
+    blockingPrint(message: "print", randomlyAfterSeconds: 1)
 }
 #endif
 //: =========================
