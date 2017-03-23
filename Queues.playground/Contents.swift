@@ -20,12 +20,16 @@ thread.start()
 #endif
 //: =========================
 //: ## Run Loop
-//: [Run Loop Management](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html)
-//let timer = Timer(timeInterval: 1.0, repeats: true) { timer in
-//    print("poop")
-//}
-//let runner = RunLoop.current
-//runner.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+//: ![RunLoop](RunLoop.png)
+//: [Run Loop Management](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html) \
+//: ![CocoalRunLoop](CocoalRunLoop.jpg)
+#if false
+let timer = Timer(timeInterval: 1.0, repeats: true) { timer in
+    print("tick")
+}
+let runner = RunLoop.current
+runner.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
+#endif
 //: =========================
 //: ## Queues
 //: [Dispatch Queues](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html)
