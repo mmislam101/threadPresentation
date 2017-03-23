@@ -94,6 +94,11 @@ concurrentQueue.async {
     blockingPrint(message: "print 3: \(Thread.current)", afterSeconds: 1)
 }
 #endif
+/*:
+ ## Development
+ Normally during development you don't have to create your own queues.
+ DispatchQueue has helpers to give you the kind of queues you want.
+ */
 //: ### Background concurrent and asynchronous
 #if false
 DispatchQueue.global().async {
@@ -128,6 +133,7 @@ DispatchQueue.main.sync {
     blockingPrint(message: "print", randomlyAfterSeconds: 1)
 }
 #endif
+//:[Why??](http://stackoverflow.com/a/7817170)
 /*: 
  ### Other types of DispatchQueues
  - DispatchGroup: If you want to execute a task something **after** one or more Queues are finished
