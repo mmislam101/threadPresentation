@@ -32,74 +32,96 @@ runner.add(timer, forMode: RunLoopMode.defaultRunLoopMode)
 #endif
 //: =========================
 //: ## Queues
-//: [Dispatch Queues](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/OperationQueues/OperationQueues.html)
+/*:
+ There are many ways to adapt existing threaded code to take advantage of Grand Central Dispatch and operation objects. Although moving away from threads may not be possible in all cases, performance (and the simplicity of your code) can improve dramatically in places where you do make the switch. Specifically, using dispatch queues and operation queues instead of threads has several advantages:
+ 
+ - It reduces the memory penalty your application pays for storing thread stacks in the application’s memory space.
+ - It eliminates the code needed to create and configure your threads.
+ - It eliminates the code needed to manage and schedule work on threads.
+ - It simplifies the code you have to write. \
+ [Dispatch Queues](https://developer.apple.com/library/content/documentation/General/Conceptual/ConcurrencyProgrammingGuide/ThreadMigration/ThreadMigration.html)
+ */
 //: ### Custom serial queue
-//let serialQueue = DispatchQueue(label: "monkeyQueue")
-//
-//serialQueue.async {
-//    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//serialQueue.async {
-//    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//serialQueue.async {
-//    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
-//}
+#if false
+let serialQueue = DispatchQueue(label: "serialQueue")
+
+serialQueue.async {
+    blockingPrint(message: "print 1: \(Thread.current)", afterSeconds: 1)
+}
+
+serialQueue.async {
+    blockingPrint(message: "print 2: \(Thread.current)", afterSeconds: 1)
+}
+
+serialQueue.async {
+    blockingPrint(message: "print 3: \(Thread.current)", afterSeconds: 1)
+}
+#endif
 //: ### Custom concurrent queue
-//let concurrentQueue = DispatchQueue(label: "buttQueue", attributes: .concurrent)
-//
-//concurrentQueue.async {
-//    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//concurrentQueue.async {
-//    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//concurrentQueue.async {
-//    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
-//}
+#if false
+let concurrentQueue = DispatchQueue(label: "concurrentQueue", attributes: .concurrent)
+
+concurrentQueue.async {
+    blockingPrint(message: "print 1: \(Thread.current)", afterSeconds: 1)
+}
+
+concurrentQueue.async {
+    blockingPrint(message: "print 2: \(Thread.current)", afterSeconds: 1)
+}
+
+concurrentQueue.async {
+    blockingPrint(message: "print 2: \(Thread.current)", afterSeconds: 1)
+}
+#endif
 //: ### Blocking/Synchronous queue
-//print("moop")
-//DispatchQueue.global().sync {
-//    blockingPrint(message: "bloop", afterSeconds: 1)
-//}
-//print("woop")
+#if false
+print("The cat")
+DispatchQueue.global().sync {
+    blockingPrint(message: "jumped over the", afterSeconds: 1)
+}
+print("lazy dog")
+#endif
 //: ### Non-blocking/Asynchronous queue
-//print("moop")
-//DispatchQueue.global().async {
-//    blockingPrint(message: "bloop", afterSeconds: 1)
-//}
-//print("woop")
+#if false
+print("The cat")
+DispatchQueue.global().async {
+    blockingPrint(message: "jumped over the", afterSeconds: 1)
+}
+print("lazy dog")
+#endif
 //: ### Background concurrent queue asynchronously/non-blocking
-//DispatchQueue.global().async {
-//    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//DispatchQueue.global().async {
-//    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
-//}
-//
-//DispatchQueue.global().async {
-//    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
-//}
+#if false
+DispatchQueue.global().async {
+    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
+}
+
+DispatchQueue.global().async {
+    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
+}
+
+DispatchQueue.global().async {
+    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
+}
+#endif
 //: ### Main Consecutive/Serial Queue asynchronously
-//DispatchQueue.main.async {
-//    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
-//}
-//
-//DispatchQueue.main.async {
-//    blockingPrint(message: "poo2", randomlyAfterSeconds: 1)
-//}
-//
-//DispatchQueue.main.async {
-//    blockingPrint(message: "poo3", randomlyAfterSeconds: 1)
-//}
+#if false
+DispatchQueue.main.async {
+    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
+}
+
+DispatchQueue.main.async {
+    blockingPrint(message: "poo2", randomlyAfterSeconds: 1)
+}
+
+DispatchQueue.main.async {
+    blockingPrint(message: "poo3", randomlyAfterSeconds: 1)
+}
+#endif
 //: ### Main consecutive/serial Queue **synchronously**
-//DispatchQueue.main.sync {
-//    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
-//}
+#if false
+DispatchQueue.main.sync {
+    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
+}
+#endif
 //: =========================
 PlaygroundPage.current.needsIndefiniteExecution = true
