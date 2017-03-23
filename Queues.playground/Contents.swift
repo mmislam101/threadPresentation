@@ -4,12 +4,20 @@ import PlaygroundSupport
 
 //: =========================
 //: ## Processes Vs. Threads
+//: What is a process and what is a thread?
+//: ## Process
+//: ![Processes](Processes.png)
+//: =========================
+//: ![ProcessAndThreads](ProcessAndThreads.png)
 //: ## Threads
+//: ![Thread](Thread.png)
 //: [Creating Threads](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/CreatingThreads/CreatingThreads.html)
-//let thread = Thread {
-//    print("monkey")
-//}
-//thread.start()
+#if false
+let thread = Thread {
+    print("I'm just a task, only a task")
+}
+thread.start()
+#endif
 //: =========================
 //: ## Run Loop
 //: [Run Loop Management](https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html)
