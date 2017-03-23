@@ -45,15 +45,15 @@ import PlaygroundSupport
 
 //: ### Using concurrent queue asynchronously/non-blocking
 //DispatchQueue.global().async {
-//    blockingPrint(message: "poo1", randomlyAfterSeconds: 1)
+//    blockingPrint(message: "poo1: \(Thread.current)", afterSeconds: 1)
 //}
 //
 //DispatchQueue.global().async {
-//    blockingPrint(message: "poo2", randomlyAfterSeconds: 1)
+//    blockingPrint(message: "poo2: \(Thread.current)", afterSeconds: 1)
 //}
 //
 //DispatchQueue.global().async {
-//    blockingPrint(message: "poo3", randomlyAfterSeconds: 1)
+//    blockingPrint(message: "poo3: \(Thread.current)", afterSeconds: 1)
 //}
 
 //: ### Using consecutive/serial main Queue asynchronously
