@@ -140,6 +140,10 @@ DispatchQueue.main.sync {
  - DispatchWorkItem: If you want to cancel work on a queue
  - DispatchSource: Not really sure what this is \
  [Good doc with examples](https://www.allaboutswift.com/dev/2016/7/12/gcd-with-swfit3)
+ ### Other things to know about Queues
+ - Quality Of Service: This lets the OS know at what priority level this queue should be run in. \
+ ![Qos](QoS.png) \
+ [Prioritize Queues](https://developer.apple.com/library/content/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html)
  */
 //: =========================
 //:## Operations
