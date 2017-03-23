@@ -142,4 +142,11 @@ DispatchQueue.main.sync {
  [Good doc with examples](https://www.allaboutswift.com/dev/2016/7/12/gcd-with-swfit3)
  */
 //: =========================
+//:## Operations
+
+
+//: [Advanced Operations video](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwib5Lmi0-3SAhWJqVQKHe5VAdEQFggaMAA&url=https%3A%2F%2Fdeveloper.apple.com%2Fvideos%2Fplay%2Fwwdc2015%2F226%2F&usg=AFQjCNFTC3g6JOP_DMCWV0CmSzVEWU9Nlw&bvm=bv.150475504,d.cGw) \
+//: [Advanced Operations sample](https://developer.apple.com/sample-code/wwdc/2015/downloads/Advanced-NSOperations.zip)
+
+//:=========================
 PlaygroundPage.current.needsIndefiniteExecution = true
